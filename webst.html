@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Türkiye Bölgeleri Detaylı Bilgi</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    background: #f9f9f9;
+    color: #333;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  p.intro {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  #bolgeler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  button.bolge-btn {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.25s;
+    flex: 1 1 150px;
+    max-width: 180px;
+  }
+  button.bolge-btn:hover {
+    background-color: #1c5980;
+  }
+  #bilgi {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    min-height: 220px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Türkiye Bölgeleri</h1>
+<p class="intro">Aşağıdaki bölgelerden birine tıklayarak, o bölge hakkında bilgi edinebilirsiniz.</p>
+
+<div id="bolgeler">
+  <!-- Butonlar JS ile buraya gelecek -->
+</div>
+
+<div id="bilgi">
+  Lütfen yukarıdaki bölgelerden birine tıklayınız.
+</div>
+
+<script>
+  const bolgeler = {
+    "Marmara": `
+      <strong>Marmara Bölgesi</strong> Türkiye'nin kuzeybatısında yer alan, ekonomik ve kültürel olarak en gelişmiş bölgesidir. 
+      Ülkenin en kalabalık metropolü İstanbul bu bölgede bulunur. Marmara, doğal güzellikleri ve tarihî mirasıyla dikkat çeker. 
+      Boğaziçi, Osmanlı'dan kalma camiler, saraylar ve modern şehir yaşamı bir aradadır. Bursa'nın kaplıcaları ve Uludağ Kayak Merkezi,
+      Çanakkale'nin Gelibolu Yarımadası ve Truva Antik Kenti gibi önemli turistik noktaları da içerir.
+      <br><br>
+      Bölge, Türkiye'nin sanayi ve ticaret merkezlerinden biri olup, aynı zamanda zengin kültürel etkinliklere ev sahipliği yapar. 
+      Tarih boyunca birçok medeniyete ev sahipliği yapması, bölgeyi zengin bir mozaik haline getirmiştir.
+    `,
+    "Ege": `
+      <strong>Ege Bölgesi</strong>, Türkiye'nin batısında yer alır ve Akdeniz ikliminin etkisiyle ılıman, sıcak ve güneşli bir yapıya sahiptir. 
+      Ege'nin bereketli toprakları, zeytin ve üzüm bağlarıyla kaplıdır. İzmir, bölgenin en önemli şehirlerinden biridir ve modern yaşamla tarihi 
+      dokunun başarılı bir harmanını sunar. Bölgedeki Efes Antik Kenti, Artemis Tapınağı ve antik tiyatrolar arkeoloji meraklılarını cezbeder.
+      <br><br>
+      Bodrum gibi turistik tatil beldeleri ise deniz, kum ve güneşin yanı sıra hareketli gece hayatıyla da tanınır. Ege'nin sakin koyları ve güzel sahilleri,
+      ziyaretçilerine huzurlu ve dinlendirici bir tatil deneyimi sunar.
+    `,
+    "Akdeniz": `
+      <strong>Akdeniz Bölgesi</strong>, Türkiye'nin güneyinde yer alır ve sıcak, nemli iklimiyle tipik bir Akdeniz iklimine sahiptir. 
+      Bölgenin en bilinen şehirleri Antalya, Adana ve Mersin'dir. Antalya, dünya çapında bir turizm merkezi olup, berrak denizi, 
+      geniş kumsalları ve zengin tarihî dokusuyla ziyaretçilerini büyüler. Kaleiçi bölgesi ve antik kentler, bölgenin kültürel zenginliğini yansıtır.
+      <br><br>
+      Adana ise Türkiye'nin en lezzetli mutfaklarından birine sahip olup, tarihi Taş Köprü ve diğer mimari eserlerle doludur. 
+      Akdeniz Bölgesi, doğa, tarih ve deniz turizmini bir arada sunan eşsiz bir yerdir.
+    `,
+    "İç Anadolu": `
+      <strong>İç Anadolu Bölgesi</strong>, Türkiye'nin tam merkezinde yer alır ve geniş bozkırlarıyla bilinir. Bölge, hem tarihî hem de modern şehirleriyle dikkat çeker. 
+      Ankara, Türkiye'nin başkenti olarak politik, kültürel ve ekonomik anlamda büyük önem taşır. Konya ise Mevlana Celaleddin Rumi'nin şehri olarak mistik ve kültürel bir merkezdir.
+      <br><br>
+      Bölge aynı zamanda Kapadokya gibi benzersiz doğal oluşumları ve yer altı şehirleri ile turizm açısından büyük değer taşır. İç Anadolu, hem geleneksel yaşamı hem de çağdaş yüzüyle ziyaretçilerine zengin deneyimler sunar.
+    `,
+    "Karadeniz": `
+      <strong>Karadeniz Bölgesi</strong>, Türkiye'nin kuzeyinde yer alır ve yeşilin her tonunu barındıran ormanları, yaylaları ve derin vadileri ile ünlüdür. 
+      Bölge, kendine özgü kültürü, müziği ve mutfağıyla dikkat çeker. Trabzon, tarihi Sümela Manastırı ve yaylaları ile turistik açıdan önemli bir merkezdir. 
+      Rize ise çay bahçeleri ve doğal güzellikleriyle meşhurdur.
+      <br><br>
+      Karadeniz'in kendine has doğası ve sakin yaşam tarzı, ziyaretçilere huzurlu ve farklı bir deneyim sunar. Yayla kültürü ve el sanatları da bölgenin zenginliklerindendir.
+    `,
+    "Doğu Anadolu": `
+      <strong>Doğu Anadolu Bölgesi</strong>, Türkiye'nin en yüksek ve en soğuk bölgelerinden biridir. Sert iklim koşullarına rağmen, zengin kültürel mirasıyla dikkat çeker. 
+      Erzurum, Palandöken Kayak Merkezi ile kış turizminin gözde merkezlerindendir. Kars, Ani Harabeleri ile tarihi zenginliğini yansıtır. 
+      Van Gölü ve Akdamar Adası ise doğal güzellikleriyle öne çıkar.
+      <br><br>
+      Bölge, tarihi İpek Yolu üzerinde yer alması sebebiyle birçok medeniyetin izlerini taşır. Doğu Anadolu, doğal ve tarihî zenginliklerin harmanlandığı bir coğrafyadır.
+    `,
+    "Güneydoğu Anadolu": `
+      <strong>Güneydoğu Anadolu Bölgesi</strong>, zengin tarihî mirası, kültürel çeşitliliği ve bereketli toprakları ile Türkiye'nin önemli bölgelerindendir. 
+      Gaziantep, dünya çapında mutfağı ve Zeugma Mozaik Müzesi ile tanınır. Şanlıurfa, Peygamberler Şehri olarak kutsal mekanlara ev sahipliği yapar.
+      <br><br>
+      Mardin'in taş mimarisi ve dar sokakları bölgenin kültürel zenginliğini yansıtır. Bölge, tarih boyunca birçok medeniyete ev sahipliği yapmış, 
+      zengin bir kültürel dokuya sahiptir. Hem doğa hem de tarih tutkunları için cazip bir destinasyondur.
+    `
+  };
+
+  const bolgelerDiv = document.getElementById('bolgeler');
+  const bilgiDiv = document.getElementById('bilgi');
+
+  for (const bolge in bolgeler) {
+    const btn = document.createElement('button');
+    btn.textContent = bolge + " Bölgesi";
+    btn.className = 'bolge-btn';
+    btn.onclick = () => {
+      bilgiDiv.innerHTML = bolgeler[bolge];
+      window.scrollTo({ top: bilgiDiv.offsetTop - 20, behavior: 'smooth' });
+    };
+    bolgelerDiv.appendChild(btn);
+  }
+</script>
+
+</body>
+</html>
